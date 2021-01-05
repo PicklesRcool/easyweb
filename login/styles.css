@@ -1,0 +1,73 @@
+body {
+    background-image: url(../EasyWeb/img/background.jpg);
+    background-color: #252525;
+    background-size: cover;
+}
+
+.page-heading {
+    padding: 6em 0 6em 6em;
+    display: block;
+    float: left;
+    font-size: 3em;
+    color: white;
+    font-family: 'IBM Plex Sans', sans-serif;
+}
+
+.login-container {
+    position: relative;
+}
+
+.login {
+    border-radius: 10px;
+    margin: 8em 8em 8em 0.5em;
+    display: block;
+    float: right;
+    justify-content: center;
+    width: 30em;
+    background-color: #151515;
+    align-self: flex-end;
+}
+
+.login:last-child {
+    padding-bottom: 2em;
+}
+
+.input {
+    color: white;
+    font-family: 'IBM Plex Sans', sans-serif;
+    max-width: fit-content;
+    padding: 1.5em 1.5em 0em;
+    margin: 0 auto;
+}
+
+.input .input label {
+    display: block;
+    padding-bottom: 0.5em;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: bold;
+    text-transform: capitalize;
+}
+
+.input input,
+.input button {
+    color: white;
+    background-color: #242424;
+    display: block;
+    width: 25em;
+    padding: 1em;
+    line-height: 1.2em;
+    border-radius: 5px;
+    border: 1px solid blueviolet;
+    font-weight: bold;
+}
+
+.input a {
+    color: white;
+    text-decoration: none;
+}
+
+.input input:focus,
+.input button:focus {
+    transition: 0.5s ease-out;
+    border: 3px solid blueviolet;
+}
