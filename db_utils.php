@@ -2,7 +2,10 @@
 
 namespace EasyWeb
 
-function DbOpenCon(string $dbuser, string $dbpass) {
+$secret_login = "Volodia";
+$secret_passw = "44845Volodia";
+
+function DbOpenCon($dbuser, $dbpass) {
   $dbhost = "localhost";
   $db     = "easyweb";
 
@@ -12,11 +15,11 @@ function DbOpenCon(string $dbuser, string $dbpass) {
   // Check connection
   if ($conn->connect_error) {
     echo "Connection failed: " . $conn->connect_error;
-    return false;
+  } else {
+    echo "Connected successfully";
   }
 
-  echo "Connected successfully";
-  return true;
+  return $conn;
 }
  
 function DbCloseCon($conn) {
@@ -25,5 +28,17 @@ function DbCloseCon($conn) {
 
 include 'db_get_utils.php';
 include 'db_add_utils.php';
+
+function VerifyLogin($conn, $entered_name, $entered_passw) {
+  $users = DbGetAllStudents($conn)
+
+  foreach ($users as $user) {
+    if ($user->name == $entered_name && $user->passw == $entered_passw) {
+      return true;
+    }
+  }
+
+  return false;
+}
 
 ?>

@@ -5,7 +5,9 @@ include '../db_utils.php';
 $username = $_REQUEST['name'];
 $userpass = $_REQUEST['pass'];
 
-if (DbOpenCon($username, $userpass)) {
+$conn = DbOpenCon($secret_login, $secret_passw);
+
+if (VerifyLogin($conn, $username, $userpass)) {
   header("Location: ../task-choise");
 }
 else {
