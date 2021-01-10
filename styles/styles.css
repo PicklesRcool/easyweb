@@ -32,6 +32,10 @@ body {
     font-family: 'IBM Plex Sans', sans-serif;
 }
 
+.page-heading.execution {
+    padding: 3em 1em 0 2em;
+}
+
 .container {
     position: relative;
 }
@@ -122,4 +126,48 @@ body {
 
 #demo {
     margin-top: 0.5em;
+}
+
+.form.results {
+    margin-top: 15em;
+}
+
+.input.output-input {
+    border-collapse: collapse;
+    margin-top: 2em;
+    font-size: 0.9em;
+    font-family: sans-serif;
+    min-width: 400px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+.input.output-input thead tr {
+    background-color: #834f91;
+    color: #ffffff;
+    text-align: left;
+}
+
+.input.output-input th,
+.input.output-input td {
+    padding: 12px 15px;
+}
+
+.input.output-input tbody tr {
+    border-bottom: 1px solid #dddddd;
+}
+
+.input.output-input tbody tr:nth-of-type(even) {
+    background-color: #242424;
+}
+
+.input.output-input tbody tr:last-of-type {
+    border-bottom: 2px solid #834f91;
+}
+
+.task-info {
+    max-width: 580px;
+}
+
+.task-desc {
+    font-size: 0.5em;
 }

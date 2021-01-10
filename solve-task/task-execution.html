@@ -6,19 +6,26 @@
     <link rel="stylesheet" href="../styles/styles.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@600&display=swap" rel="stylesheet">
-    <title>Authorization</title>
+    <title>Complete the task</title>
 </head>
 
 <body>
     <div class='container'>
-        <div class="page-heading">
+        <div class="page-heading execution">
             <span>Complete your task in</span>
             <p id="demo"></p>
+
+            <div class="task-info">
+                <div class="task-name">Name</div>
+                <div class="task-desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum, explicabo. Unde voluptas dignissimos necessitatibus, quae doloremque facere ad explicabo alias esse numquam, distinctio officia quisquam culpa eius perspiciatis suscipit
+                    maiores!
+                </div>
+            </div>
         </div>
 
 
         <div class="form task-editor" style="width: 40em; height: 40em;">
-            <div id="editor">function foo(items) { var x = "All this is syntax highlighted"; return x; }</div>
+            <div id="editor"></div>
 
 
             <div class="input send-code-button">
