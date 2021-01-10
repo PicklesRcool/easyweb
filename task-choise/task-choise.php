@@ -15,7 +15,7 @@
             <span>Choose the task:</span>
         </div>
 
-        <form method="POST" action="">
+        <form method="POST" action="../solve-task/task-execution.php">
             <div class="form task-choise">
                 <div class="input difficulty">
                     <label for="select-difficulty">Select difficulty</label>

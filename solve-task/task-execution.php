@@ -16,10 +16,18 @@
             <p id="demo"></p>
 
             <div class="task-info">
-                <div class="task-name">Name</div>
-                <div class="task-desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum, explicabo. Unde voluptas dignissimos necessitatibus, quae doloremque facere ad explicabo alias esse numquam, distinctio officia quisquam culpa eius perspiciatis suscipit
-                    maiores!
-                </div>
+                <?php
+                    include_once '../db_utils/db_utils.php';
+
+                    $sect_id = $_REQUEST['topic'];
+                    $diff_id = $_REQUEST['difficulty'];
+
+                    $conn = Database::getConnection();
+                    $task = DbSelectTask($conn, $sect_id, $diff_id);
+
+                    printf('<div class="task-name">%s</div>', $task->name);
+                    printf('<div class="task-desc">%s</div>', $task->descr);
+                ?>
             </div>
         </div>
 

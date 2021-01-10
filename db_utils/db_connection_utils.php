@@ -11,7 +11,7 @@ class Database {
     if ($conn->connect_error) {
       echo "[MySql][ERROR]: Connection failed: " . $conn->connect_error . "<br>";
     } else {
-      echo "[MySql][INFO]: Connected successfully!<br>";
+      //echo "[MySql][INFO]: Connected successfully!<br>";
     }
   }
 
