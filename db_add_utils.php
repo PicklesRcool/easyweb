@@ -1,5 +1,7 @@
 <?php
 
+include_once 'easyweb_data.php';
+
 function DbAddDifficulty($conn, $diff) {
   $query_str = "INSERT INTO Difficulty (name) 
                 VALUES ($diff->name)";

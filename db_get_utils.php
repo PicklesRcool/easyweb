@@ -1,5 +1,7 @@
 <?php
 
+include_once 'easyweb_data.php';
+
 function DbGetAllDifficulties($conn) {
   $query_str = "SELECT * FROM Difficulty";
   $difficulties = array();
@@ -80,25 +82,25 @@ function DbGetAllStudents($conn) {
   $query_result = mysqli_query($conn, $query_str);
 
   if (!$query_result) {
-    echo "MySql error: " . mysqli_error($conn) . "<br>";
+    echo "[MySql][ERROR]: " . mysqli_error($conn) . "<br>";
   }
 
   $row_num = mysqli_num_rows($query_result);
 
   if ($row_num == 0) {
-    echo "Failed to get any students from the database!<br>";
+    echo "[MySql][WARNING]: Failed to get any students from the database!<br>";
     return $students;
   }
 
   while ($row = mysqli_fetch_assoc($query_result)) {
     $stud = new Student();
 
-    $stud->id       = $row[0];
-    $stud->name     = $row[1];
-    $stud->surname  = $row[2];
-    $stud->email    = $row[3];
-    $stud->passw    = $row[4];
-
+    $stud->id       = $row['id'];
+    $stud->name     = $row['name'];
+    $stud->surname  = $row['surname'];
+    $stud->email    = $row['email'];
+    $stud->passw    = $row['passw'];
+    
     $students[] = $stud;
   }
 

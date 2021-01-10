@@ -1,7 +1,5 @@
 <?php 
 
-namespace EasyWeb
-
 class Difficulty {
   public $id;
   public $name;
