@@ -1,25 +1,32 @@
 <?php
 
-namespace EasyWeb
-
-$secret_login = "Volodia";
-$secret_passw = "44845Volodia";
-
-function DbOpenCon($dbuser, $dbpass) {
-  $dbhost = "localhost";
-  $db     = "easyweb";
+function DbOpenCon() {
+  $dbhost       = "localhost";
+  $secret_login = "Volodia";
+  $secret_passw = "44845Volodia";
+  $db           = "easyweb";
 
   // Create connection
-  $conn = new mysqli($servername, $username, $password, $database);
+  $conn = new mysqli($dbhost, $secret_login, $secret_passw, $db);
   
   // Check connection
   if ($conn->connect_error) {
-    echo "Connection failed: " . $conn->connect_error;
+    echo "Connection failed: " . $conn->connect_error . "<br>";
   } else {
-    echo "Connected successfully";
+    echo "Connected successfully!<br>";
   }
 
   return $conn;
+}
+
+function DbSelectDatabase($conn, $dbname) {
+  $query_str = "USE " . $dbname;
+
+  $query_result = mysqli_query($conn, $query_str);
+
+  if (!$query_result) {
+    echo "MySql error: " . mysqli_error($conn) . "<br>";
+  }
 }
  
 function DbCloseCon($conn) {
@@ -30,7 +37,7 @@ include 'db_get_utils.php';
 include 'db_add_utils.php';
 
 function VerifyLogin($conn, $entered_name, $entered_passw) {
-  $users = DbGetAllStudents($conn)
+  $users = DbGetAllStudents($conn);
 
   foreach ($users as $user) {
     if ($user->name == $entered_name && $user->passw == $entered_passw) {

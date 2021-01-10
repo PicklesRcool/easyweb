@@ -1,7 +1,5 @@
 <?php
 
-namespace EasyWeb
-
 function DbGetAllDifficulties($conn) {
   $query_str = "SELECT * FROM Difficulty";
   $difficulties = array();
@@ -81,8 +79,14 @@ function DbGetAllStudents($conn) {
 
   $query_result = mysqli_query($conn, $query_str);
 
-  if (mysqli_num_rows($query_result) == 0) {
-    echo "Failed to get any students from the database";
+  if (!$query_result) {
+    echo "MySql error: " . mysqli_error($conn) . "<br>";
+  }
+
+  $row_num = mysqli_num_rows($query_result);
+
+  if ($row_num == 0) {
+    echo "Failed to get any students from the database!<br>";
     return $students;
   }
 
