@@ -8,16 +8,21 @@ function DbGetAllDifficulties($conn) {
 
   $query_result = mysqli_query($conn, $query_str);
 
+  if (!$query_result) {
+    echo "[MySql][ERROR]: " . mysqli_error($conn) . "<br>";
+    exit();
+  }
+
   if (mysqli_num_rows($query_result) == 0) {
-    echo "Failed to get any difficulties from the database";
+    echo "[MySql][WARNING]: Failed to get any difficulties from the database!<br>";
     return $difficulties;
   }
 
   while ($row = mysqli_fetch_assoc($query_result)) {
     $diff = new Difficulty();
 
-    $diff->id   = $row["id"];
-    $diff->name = $row["name"];
+    $diff->id   = $row['id'];
+    $diff->name = $row['name'];
     
     $difficulties[] = $diff;
   }
@@ -31,16 +36,21 @@ function DbGetAllSections($conn) {
 
   $query_result = mysqli_query($conn, $query_str);
 
+  if (!$query_result) {
+    echo "[MySql][ERROR]: " . mysqli_error($conn) . "<br>";
+    exit();
+  }
+
   if (mysqli_num_rows($query_result) == 0) {
-    echo "Failed to get any section from the database";
+    echo "[MySql][WARNING]: Failed to get any sections from the database!<br>";
     return $sections;
   }
 
   while ($row = mysqli_fetch_assoc($query_result)) {
     $sect = new Section();
 
-    $sect->id   = $row["id"];
-    $sect->name = $row["name"];
+    $sect->id   = $row['id'];
+    $sect->name = $row['name'];
     
     $sections[] = $sect;
   }
@@ -54,20 +64,25 @@ function DbGetAllTasks($conn) {
 
   $query_result = mysqli_query($conn, $query_str);
 
+  if (!$query_result) {
+    echo "[MySql][ERROR]: " . mysqli_error($conn) . "<br>";
+    exit();
+  }
+
   if (mysqli_num_rows($query_result) == 0) {
-    echo "Failed to get any tasks from the database";
+    echo "[MySql][WARNING]: Failed to get any tasks from the database!<br>";
     return $tasks;
   }
 
   while ($row = mysqli_fetch_assoc($query_result)) {
     $task = new Task();
 
-    $task->id             = $row["id"];
-    $task->id_section     = $row["id_sect"];
-    $task->id_difficulty  = $row["id_diff"];
-    $task->name           = $row["name"];
-    $task->descr          = $row["descr"];
-    $task->answer         = $row["answer"];
+    $task->id             = $row['id'];
+    $task->id_section     = $row['id_sect'];
+    $task->id_difficulty  = $row['id_diff'];
+    $task->name           = $row['name'];
+    $task->descr          = $row['descr'];
+    $task->answer         = $row['answer'];
 
     $tasks[] = $task;
   }
@@ -83,11 +98,10 @@ function DbGetAllStudents($conn) {
 
   if (!$query_result) {
     echo "[MySql][ERROR]: " . mysqli_error($conn) . "<br>";
+    exit();
   }
 
-  $row_num = mysqli_num_rows($query_result);
-
-  if ($row_num == 0) {
+  if (mysqli_num_rows($query_result) == 0) {
     echo "[MySql][WARNING]: Failed to get any students from the database!<br>";
     return $students;
   }
@@ -113,20 +127,25 @@ function DbGetAllScores($conn) {
 
   $query_result = mysqli_query($conn, $query_str);
 
+  if (!$query_result) {
+    echo "[MySql][ERROR]: " . mysqli_error($conn) . "<br>";
+    exit();
+  }
+
   if (mysqli_num_rows($query_result) == 0) {
-    echo "Failed to get any scores from the database";
+    echo "[MySql][WARNING]: Failed to get any scores from the database!<br>";
     return $scores;
   }
 
   while ($row = mysqli_fetch_assoc($query_result)) {
     $score = new Score();
 
-    $score->id          = $row["id"];
-    $score->id_student  = $row["id_student"];
-    $score->id_task     = $row["id_task"];
-    $score->score       = $row["score"];
-    $score->time_start  = $row["time_start"];
-    $score->time_end    = $row["time_end"];
+    $score->id          = $row['id'];
+    $score->id_student  = $row['id_student'];
+    $score->id_task     = $row['id_task'];
+    $score->score       = $row['score'];
+    $score->time_start  = $row['time_start'];
+    $score->time_end    = $row['time_end'];
 
     $scores[] = $score;
   }
