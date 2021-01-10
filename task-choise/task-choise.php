@@ -20,18 +20,32 @@
                 <div class="input difficulty">
                     <label for="select-difficulty">Select difficulty</label>
                     <select id="select-difficulty" name="difficulty">
-                    <option value="easy">Easy</option>
-                    <option value="medium">Medium</option>
-                    <option value="hard">Hard</option>
+                    <?php
+                        include '../db_utils/db_utils.php';
+                        
+                        $conn = Database::getConnection();
+                        $difficulties = DbGetAllDifficulties($conn);
+                        
+                        foreach ($difficulties as $diff) {
+                            echo '<option value="$diff->name">' . $diff->name . '</option>';
+                        }
+                    ?>
                 </select>
                 </div>
 
                 <div class="input topic">
                     <label for="select-topic">Select topic</label>
                     <select id="select-topic" name="topic">
-                    <option value="semantics">Semantics</option>
-                    <option value="forms">Form</option>
-                    <option value="tags">Tags</option>
+                    <?php
+                        include '../db_utils/db_utils.php';
+                        
+                        $conn = Database::getConnection();
+                        $sections = DbGetAllSections($conn);
+                        
+                        foreach ($sections as $sect) {
+                            echo '<option value="$sect->name">' . $sect->name . '</option>';
+                        }
+                    ?>
                 </select>
                 </div>
 

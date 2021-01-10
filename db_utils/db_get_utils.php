@@ -2,14 +2,11 @@
 include_once 'easyweb_data.php';
 
 function DbGetAllDifficulties($conn) {
-  echo "<br>When I was little///<br>";
   $query_str = "SELECT * FROM Difficulty";
   $difficulties = array();
-    echo "<br>When I was little///<br>";
 
   $query_result = mysqli_query($conn, $query_str);
-  echo "<br>When I was little///<br>";
-
+  
   if (!$query_result) {
     echo "[MySql][ERROR]: " . mysqli_error($conn) . "<br>";
     exit();
