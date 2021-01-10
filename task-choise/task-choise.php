@@ -27,7 +27,7 @@
                         $difficulties = DbGetAllDifficulties($conn);
                         
                         foreach ($difficulties as $diff) {
-                            echo '<option value="$diff->name">' . $diff->name . '</option>';
+                            printf('<option value="%d">%s</option>', $diff->id, $diff->name);
                         }
                     ?>
                 </select>
@@ -43,7 +43,7 @@
                         $sections = DbGetAllSections($conn);
                         
                         foreach ($sections as $sect) {
-                            echo '<option value="$sect->name">' . $sect->name . '</option>';
+                            printf('<option value="%d">%s</option>', $sect->id, $sect->name);
                         }
                     ?>
                 </select>
