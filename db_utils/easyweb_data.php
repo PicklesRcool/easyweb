@@ -1,4 +1,4 @@
-<?php 
+<?php  // easyweb_data.php
 
 class Difficulty {
   public $id;

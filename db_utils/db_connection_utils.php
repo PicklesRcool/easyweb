@@ -1,4 +1,4 @@
-<?php
+<?php  // db_connection_utils.php
 
 function DbOpenCon() {
   $dbhost       = "localhost";
@@ -11,9 +11,9 @@ function DbOpenCon() {
   
   // Check connection
   if ($conn->connect_error) {
-    echo "Connection failed: " . $conn->connect_error . "<br>";
+    echo "[MySql][ERROR]: Connection failed: " . $conn->connect_error . "<br>";
   } else {
-    echo "Connected successfully!<br>";
+    echo "[MySql][INFO]: Connected successfully!<br>";
   }
 
   return $conn;
@@ -25,27 +25,12 @@ function DbSelectDatabase($conn, $dbname) {
   $query_result = mysqli_query($conn, $query_str);
 
   if (!$query_result) {
-    echo "MySql error: " . mysqli_error($conn) . "<br>";
+    echo "[MySql][ERROR]: " . mysqli_error($conn) . "<br>";
   }
-}
+} 
  
 function DbCloseCon($conn) {
   $conn->close();
-}
-
-include_once 'db_get_utils.php';
-include_once 'db_add_utils.php';
-
-function VerifyLogin($conn, $entered_email, $entered_passw) {
-  $users = DbGetAllStudents($conn);
-
-  foreach ($users as $user) {
-    if ($user->email == $entered_email && $user->passw == $entered_passw) {
-      return true;
-    }
-  }
-
-  return false;
 }
 
 ?>

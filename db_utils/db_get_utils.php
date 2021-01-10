@@ -1,5 +1,4 @@
-<?php
-
+<?php  // db_get_utils.php
 include_once 'easyweb_data.php';
 
 function DbGetAllDifficulties($conn) {
