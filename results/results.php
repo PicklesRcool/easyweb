@@ -51,6 +51,8 @@
 
                             printf("<td>%s</td>", $task->name);
                             printf("<td>%s</td>", $mark);
+
+                            DbAddScore($conn, $stud_id, $task_id, $mark, $start_time, $duration);
                         ?>
                     </tr>
                     <!--

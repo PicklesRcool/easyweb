@@ -6,5 +6,6 @@ include_once 'db_get_utils.php';
 include_once 'db_add_utils.php';
 include_once 'db_select_utils.php';
 include_once 'db_process.php';
+include_once 'db_add_utils.php';
 
 ?>
