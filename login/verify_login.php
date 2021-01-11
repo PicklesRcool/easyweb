@@ -12,7 +12,7 @@ if (VerifyLogin($conn, $user_email, $user_pass)) {
   header("Location: ../task-choise/task-choise.php");
 }
 else {
-  header("Location: login.html");
+  header("Location: invalid_login.html");
 }
 
 ?>
