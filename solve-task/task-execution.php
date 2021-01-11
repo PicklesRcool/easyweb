@@ -36,34 +36,46 @@
             <div id="editor"></div>
 
 
-            <div class="input send-code-button">
-                <button type="submit" onclick="send('#')">Complete</button>
-            </div>
+            <form id="solution_form" method="POST" action="../results/results.php">
+                <input type="hidden" id="solution_input" name="solution" value="">
+                <input type="hidden" id="starttime_input" name="start_time" value="">
+                <input type="hidden" id="duration_input" name="duration" value="">
+
+                <div class="input send-code-button">
+                    <button type="submit" onclick="setEditorDataToForm()">Complete</button>
+                </div>
+            </form>
 
 
             <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.12/ace.js" type="text/javascript" charset="utf-8"></script>
             <script>
-                var editor = ace.edit("editor");
-                var distance = 0;
-                var countDownDate;
+                let editor = ace.edit("editor");
+                let startTime = new Date();
+                const start = startTime.getTime();
 
                 window.onload = function() {
                     editor.setTheme("ace/theme/twilight");
                     editor.session.setMode("ace/mode/html");
                 }
 
-                function send(url) {
-                    console.log(editor.getValue());
-                    let xhr = new XMLHttpRequest();
-                    let formData = new FormData();
+                function setEditorDataToForm() {
+                    let solutionInput   = document.getElementById('solution_input');
+                    let startTimeInput  = document.getElementById('starttime_input');
+                    let durationInput   = document.getElementById('duration_input');
 
-                    xhr.open("POST", url);
+                    let startTimeStr = startTime.getFullYear()  + "-"
+                                    + (startTime.getMonth()+1)  + "-" 
+                                    +  startTime.getDate()      + " "  
+                                    +  startTime.getHours()     + ":"  
+                                    +  startTime.getMinutes()   + ":" 
+                                    +  startTime.getSeconds();
 
-                    formData.append("code", editor.getValue());
-                    formData.append("startTime", countDownDate - 5 * 60 * 1000);
-                    formData.append("time", 5 * 60 * 1000 - distance);
+                    const end = new Date().getTime();
+                    const durationMs = end - start;
 
-                    xhr.send(formData);
+                    solutionInput.setAttribute ("value", editor.getValue());
+                    startTimeInput.setAttribute("value", startTimeStr);
+                    durationInput.setAttribute ("value", durationMs);
                 }
             </script>
             <script src="timer.js"></script>
