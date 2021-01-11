@@ -40,6 +40,9 @@
                 <input type="hidden" id="solution_input" name="solution" value="">
                 <input type="hidden" id="starttime_input" name="start_time" value="">
                 <input type="hidden" id="duration_input" name="duration" value="">
+                <input type="hidden" id="task_input" name="task_id" value="<?php echo $task->id; ?>">
+                <input type="hidden" id="diff_input" name="diff_id" value="<?php echo $diff_id; ?>">
+                <input type="hidden" id="sect_input" name="sect_id" value="<?php echo $sect_id; ?>">
 
                 <div class="input send-code-button">
                     <button type="submit" onclick="setEditorDataToForm()">Complete</button>

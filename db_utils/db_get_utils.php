@@ -29,6 +29,19 @@ function DbGetAllDifficulties($conn) {
   return $difficulties;
 }
 
+function DbGetDifficultyById($conn, $id) {
+  $difficulties = DbGetAllDifficulties($conn);
+
+  foreach ($difficulties as $diff) {
+    if ($diff->id == $id) {
+      return $diff;
+    }
+  }
+
+  echo "[MySql][WARNING]: Failed to find difficulty with given id!<br>";
+  return false;
+}
+
 function DbGetAllSections($conn) {
   $query_str = "SELECT * FROM Section";
   $sections = array();
@@ -55,6 +68,19 @@ function DbGetAllSections($conn) {
   }
 
   return $sections;
+}
+
+function DbGetSectionById($conn, $id) {
+  $sections = DbGetAllSections($conn);
+
+  foreach ($sections as $sect) {
+    if ($sect->id == $id) {
+      return $sect;
+    }
+  }
+
+  echo "[MySql][WARNING]: Failed to find section with given id!<br>";
+  return false;
 }
 
 function DbGetAllTasks($conn) {
@@ -89,6 +115,19 @@ function DbGetAllTasks($conn) {
   return $tasks;
 }
 
+function DbGetTaskById($conn, $id) {
+  $tasks = DbGetAllTasks($conn);
+
+  foreach ($tasks as $task) {
+    if ($task->id == $id) {
+      return $task;
+    }
+  }
+
+  echo "[MySql][WARNING]: Failed to find task with given id!<br>";
+  return false;
+}
+
 function DbGetAllStudents($conn) {
   $query_str = "SELECT * FROM Student";
   $students = array();
@@ -118,6 +157,19 @@ function DbGetAllStudents($conn) {
   }
 
   return $students;
+}
+
+function DbGetStudentById($conn, $id) {
+  $students = DbGetAllStudents($conn);
+
+  foreach ($students as $stud) {
+    if ($stud->id == $id) {
+      return $stud;
+    }
+  }
+
+  echo "[MySql][WARNING]: Failed to find student with given id!<br>";
+  return false;
 }
 
 function DbGetAllScores($conn) {
@@ -150,6 +202,19 @@ function DbGetAllScores($conn) {
   }
 
   return $scores;
+}
+
+function DbGetScoreById($conn, $id) {
+  $scores = DbGetAllScores($conn);
+
+  foreach ($scores as $score) {
+    if ($score->id == $id) {
+      return $score;
+    }
+  }
+
+  echo "[MySql][WARNING]: Failed to find score with given id!<br>";
+  return false;
 }
 
 ?>

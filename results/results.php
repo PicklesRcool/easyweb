@@ -26,9 +26,34 @@
 
                 <tbody>
                     <tr>
-                        <td>Task 1</td>
-                        <td>Mark 1</td>
+                        <?php
+                            include '../db_utils/db_utils.php';
+
+                            $solution   = $_REQUEST['solution'];
+                            $start_time = $_REQUEST['start_time'];
+                            $duration   = $_REQUEST['duration'];    
+
+                            $stud_id = 1;
+                            $task_id = $_REQUEST['task_id'];
+                            $diff_id = $_REQUEST['diff_id'];
+                            $sect_id = $_REQUEST['sect_id'];
+
+                            $conn = Database::getConnection();
+
+                            $student    = DbGetStudentById   ($conn, $stud_id);
+                            $task       = DbGetTaskById      ($conn, $task_id);
+                            $difficulty = DbGetDifficultyById($conn, $diff_id);
+                            $section    = DbGetSectionById   ($conn, $sect_id);
+
+                            $max_mark = $difficulty->id * 10;
+
+                            $mark = EvaluateTask($solution, $task->answer, $duration, $max_mark);
+
+                            printf("<td>%s</td>", $task->name);
+                            printf("<td>%s</td>", $mark);
+                        ?>
                     </tr>
+                    <!--
                     <tr>
                         <td>Task 2</td>
                         <td>Mark 2</td>
@@ -37,15 +62,10 @@
                         <td>Task 3</td>
                         <td>Mark 3</td>
                     </tr>
+                    -->
                 </tbody>
             </table>
         </div>
-        <?php
-            echo "<br>Received request:<br>";
-            foreach ($_REQUEST as $key => $value) {
-                echo "Key: $key; Value: $value<br>";
-            }
-        ?>
     </div>
 
 
