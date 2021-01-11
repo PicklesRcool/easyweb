@@ -164,6 +164,20 @@ body {
     border-bottom: 2px solid #834f91;
 }
 
+.input.invalid-data {
+    background-color: rgb(156, 43, 43);
+    border-radius: 10px;
+    padding-bottom: 0.7em;
+    padding-top: 0.7em;
+    margin-top: 1.7em;
+    margin-bottom: 0em;
+}
+
+.input.invalid-data p {
+    margin: 0;
+    padding: 0;
+}
+
 .task-info {
     max-width: 580px;
 }
